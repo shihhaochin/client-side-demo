@@ -1,0 +1,14 @@
+.profileBackground {
+  background-color: rgba(128, 128, 128, 0.3);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  .profileContainer {
+    padding-top: 15rem;
+    font-size: 2rem;
+
+    p {
+      margin: 5px 0;
+    }
+  }
+}

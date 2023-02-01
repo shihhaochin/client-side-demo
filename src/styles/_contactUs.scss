@@ -1,0 +1,55 @@
+.contactUsbg {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("../img/homepageImg.png");
+  background-size: cover;
+  background-position: center;
+
+  .contactUsContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 15rem;
+
+    .contactUs {
+      width: 60vw;
+      text-align: right;
+      p {
+        font-size: 5rem;
+        color: rgb(7, 68, 66);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input {
+          width: 50vw;
+          font-size: 2rem;
+          background-color: rgba(0, 0, 0, 0.8);
+          margin-bottom: 1rem;
+          padding: 2px 4px;
+          color: #5ff7e8;
+          outline: none;
+        }
+        textarea {
+          width: 50vw;
+          height: 20vh;
+          font-size: 2rem;
+          padding: 2px;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: #5ff7e8;
+          outline: none;
+        }
+        button {
+          padding: 1rem 5rem;
+          margin-top: 1rem;
+          border-radius: 45px;
+          color: white;
+          background: linear-gradient(to top right, #008080, #191970);
+        }
+        button:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

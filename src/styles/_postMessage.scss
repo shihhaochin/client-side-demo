@@ -1,0 +1,36 @@
+.postMessageBackground {
+  background-color: rgba(128, 128, 128, 0.3);
+  height: 100vh;
+
+  .postMessageContainer {
+    padding: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      background-color: transparent;
+      border-bottom: 2px solid rgb(7, 68, 66);
+      outline: none;
+      width: 45rem;
+    }
+    textarea {
+      background-color: transparent;
+      border-bottom: 2px solid rgb(7, 68, 66);
+      outline: none;
+      margin: 1rem 0;
+      width: 45rem;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 1rem 3rem;
+      border-radius: 45px;
+      color: white;
+      background-color: rgba(7, 68, 66, 0.8);
+      font-size: 1.5rem;
+    }
+    button:hover {
+      transform: translateY(-3px);
+    }
+  }
+}

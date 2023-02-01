@@ -1,0 +1,21 @@
+.videoBackground {
+  background-color: rgba(128, 128, 128, 0.3);
+  display: flex;
+  justify-content: center;
+
+  .videosContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 90vw;
+    padding: 5rem 0rem;
+
+    div {
+      margin: 2rem;
+      iframe {
+        border-radius: 30px;
+      }
+    }
+  }
+}

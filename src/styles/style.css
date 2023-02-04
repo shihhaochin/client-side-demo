@@ -174,6 +174,7 @@ body {
     width: 80vw !important;
   }
   main .homepageImg .homepageImgContent {
+    height: 33rem !important;
     top: 10rem !important;
   }
   main .homepageImg .homepageImgContent h1 {
@@ -181,7 +182,10 @@ body {
   }
   main .homepageImg .homepageImgContent p {
     font-size: 1.5rem !important;
-    margin-top: 0 !important;
+    margin-top: -2rem !important;
+  }
+  main .homepageImg .homepageImgContent button {
+    margin-top: -1rem !important;
   }
   main .secondImg .article .news {
     width: 90vw !important;
@@ -213,6 +217,11 @@ body {
   }
   .contactUsbg .contactUsContainer .contactUs form button {
     padding: 0.5rem 3rem !important;
+  }
+  .allArticleBackground .notUserPage {
+    padding: 2rem 0 !important;
+    font-size: 2rem !important;
+    text-align: center;
   }
 }
 header {
@@ -763,7 +772,7 @@ main .homepageImg {
 }
 main .homepageImg .homepageImgContent {
   width: 100%;
-  height: 56rem;
+  height: 36rem;
   position: absolute;
   top: 30rem;
   text-align: center;

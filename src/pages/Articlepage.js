@@ -102,38 +102,9 @@ const ArticlePage = ({
     return window.btoa(binary);
   }
 
-  //搜尋文章
-
-  let [articleInput, setArticleInput] = useState("");
-
-  const handleArticleInput = (e) => {
-    setArticleInput(e.target.value);
-  };
-  const commitArticleSearch = () => {
-    articleService
-      .getSearchArticle(articleInput)
-      .then((data) => {
-        if (data.data.length === 0) {
-          window.alert(`沒有 ${articleInput} 的相關文章，請重新搜尋`);
-        } else {
-          setSearchArticleData(data.data);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div className="allArticleBackground" id="allArticleBackground">
       {!currentUser && <div className="notUserPage">你比須先登入!</div>}
-
-      {currentUser && (
-        <div className="searchArticleContainer">
-          <input onChange={handleArticleInput} type="text" />
-          <button onClick={commitArticleSearch}>文章搜尋</button>
-        </div>
-      )}
 
       {currentUser && loading === true && (
         <div className="loadingImgContainer">

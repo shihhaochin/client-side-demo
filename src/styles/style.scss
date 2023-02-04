@@ -220,13 +220,17 @@ body {
   main {
     .homepageImg {
       .homepageImgContent {
+        height: 33rem !important;
         top: 10rem !important;
         h1 {
           font-size: 6rem !important;
         }
         p {
           font-size: 1.5rem !important;
-          margin-top: 0 !important;
+          margin-top: -2rem !important;
+        }
+        button {
+          margin-top: -1rem !important;
         }
       }
     }
@@ -276,6 +280,14 @@ body {
           }
         }
       }
+    }
+  }
+
+  .allArticleBackground {
+    .notUserPage {
+      padding: 2rem 0 !important;
+      font-size: 2rem !important;
+      text-align: center;
     }
   }
 }

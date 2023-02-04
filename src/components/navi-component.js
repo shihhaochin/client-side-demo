@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import searchIcon from "../img/searchIcon.png";
 
 import AuthService from "../services/auth.service";
-import { HashLink } from "react-router-hash-link";
 
 const NaviComponent = ({
   search,
@@ -18,12 +17,14 @@ const NaviComponent = ({
   allnavibarChange,
   setAllnavibarChange,
   setLoading,
+  handleArticleInput,
+  commitArticleSearch,
 }) => {
   const navigate = useNavigate();
   //在input改變的時候（輸入什麼東西的時候）把值存入setInput裏面
-  const inputHandler = (e) => {
-    setInput(e.target.value);
-  };
+  // const inputHandler = (e) => {
+  //   setInput(e.target.value);
+  // };
 
   const handleLogout = () => {
     AuthService.logout();
@@ -77,12 +78,12 @@ const NaviComponent = ({
             >
               <img src={searchIcon} alt="" />
             </div>
-            <input onChange={inputHandler} type="text" className="text-black" />
-            <button onClick={search}>
-              <HashLink to="#secondImg" href="#secondImg">
-                新聞搜尋
-              </HashLink>
-            </button>
+            <input
+              onChange={handleArticleInput}
+              type="text"
+              className="text-black"
+            />
+            <button onClick={commitArticleSearch}>文章搜尋</button>
           </div>
         </div>
         <div className={allnavibarChange ? "nav-right" : "nav-rightChange"}>

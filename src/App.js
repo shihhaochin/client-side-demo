@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import NaviComponent from "./components/navi-component";
 import HomePage from "./pages/Homepage";
@@ -21,6 +21,7 @@ import AboutUs from "./pages/About";
 import FooterComponent from "./components/footer-component";
 import EntranceCheckComponent from "./components/entranceCheck-component";
 import AuthService from "./services/auth.service";
+import ArticleService from "./services/article.service";
 import "./styles/style.css";
 
 function App() {
@@ -31,45 +32,71 @@ function App() {
   let [googleId, setGoogleId] = useState("");
   let [messageClose, setMessageClose] = useState(true);
   let navigate = useNavigate();
-  let [input, setInput] = useState("");
-  let [data, setData] = useState(null);
-  let [page, setPage] = useState(1);
+  // let [input, setInput] = useState("");
+  // let [data, setData] = useState(null);
+  // let [page, setPage] = useState(1);
   let [searchArticleData, setSearchArticleData] = useState(null);
   let [loading, setLoading] = useState(true);
-  const API = "8ada18c60964437eb6c8b04dfa514ef4";
-  const initialURL = `https://newsapi.org/v2/top-headlines?country=tw&category=health&pageSize=6&page=1&apiKey=${API}`;
 
-  const searchURL = `https://newsapi.org/v2/everything?q=${input}&pageSize=4&page=1&apiKey=${API}&language=zh`;
+  //搜尋文章
+
+  let [articleInput, setArticleInput] = useState("");
+
+  const handleArticleInput = (e) => {
+    setArticleInput(e.target.value);
+  };
+  const commitArticleSearch = () => {
+    if (currentUser) {
+      navigate("/articles");
+      ArticleService.getSearchArticle(articleInput)
+        .then((data) => {
+          if (data.data.length === 0) {
+            window.alert(`沒有 ${articleInput} 的相關文章，請重新搜尋`);
+          } else {
+            setSearchArticleData(data.data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      window.alert("你必須先登才能搜尋文章");
+    }
+  };
+
+  // const initialURL = `https://newsapi.org/v2/top-headlines?country=tw&category=health&pageSize=6&page=1&apiKey=${API}`;
+
+  // const searchURL = `https://newsapi.org/v2/everything?q=${input}&pageSize=4&page=1&apiKey=${API}&language=zh`;
   //fetch data from news api
   //放一個變數url會隨search的東西改變
   // eslint-disable-next-line
-  const search = async (url) => {
-    setPage(2);
-    const dataFetch = await fetch(url);
-    const parsedData = await dataFetch.json();
-    setData(parsedData.articles);
-    navigate("/");
-  };
+  // const search = async (url) => {
+  //   setPage(2);
+  //   const dataFetch = await fetch(url);
+  //   const parsedData = await dataFetch.json();
+  //   setData(parsedData.articles);
+  //   navigate("/");
+  // };
   //看更多文章
-  const moreNews = async () => {
-    let newURL;
-    if (input === "") {
-      newURL = `https://newsapi.org/v2/top-headlines?country=tw&category=health&pageSize=4&page=${page}&apiKey=${API}`;
-    } else {
-      newURL = `https://newsapi.org/v2/everything?q=${input}&pageSize=4&page=${page}&apiKey=${API}&language=zh`;
-    }
-    setPage(page + 1);
-    let dataFetch = await fetch(newURL);
-    let parsedData = await dataFetch.json();
-    //把原本就已經有的data跟新fetch到的data串在一起
-    setData(data.concat(parsedData.articles));
-  };
+  // const moreNews = async () => {
+  //   let newURL;
+  //   if (input === "") {
+  //     newURL = `https://newsapi.org/v2/top-headlines?country=tw&category=health&pageSize=4&page=${page}&apiKey=${API}`;
+  //   } else {
+  //     newURL = `https://newsapi.org/v2/everything?q=${input}&pageSize=4&page=${page}&apiKey=${API}&language=zh`;
+  //   }
+  //   setPage(page + 1);
+  //   let dataFetch = await fetch(newURL);
+  //   let parsedData = await dataFetch.json();
+  //   //把原本就已經有的data跟新fetch到的data串在一起
+  //   setData(data.concat(parsedData.articles));
+  // };
 
   //首頁開啟後直接執行search()從newsapi爬新聞
-  useEffect(() => {
-    search(initialURL);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   search(initialURL);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   //改變sidenavi的state
   let [sidenaviChange, setSidenaviChange] = useState(true);
@@ -87,10 +114,6 @@ function App() {
   return (
     <div style={{ position: "relative" }}>
       <NaviComponent
-        search={() => {
-          search(searchURL);
-        }}
-        setInput={setInput}
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
         sidenaviChange={sidenaviChange}
@@ -103,6 +126,8 @@ function App() {
         setAllnavibarChange={setAllnavibarChange}
         loading={loading}
         setLoading={setLoading}
+        handleArticleInput={handleArticleInput}
+        commitArticleSearch={commitArticleSearch}
       />
       <Routes>
         <Route
@@ -111,8 +136,6 @@ function App() {
             <HomePage
               sidenaviChange={sidenaviChange}
               setSidenaviChange={setSidenaviChange}
-              data={data}
-              moreNews={moreNews}
               allnavibarChange={allnavibarChange}
               setAllnavibarChange={setAllnavibarChange}
             />
@@ -158,6 +181,7 @@ function App() {
               setMessageClose={setMessageClose}
               loading={loading}
               setLoading={setLoading}
+              searchArticleData={searchArticleData}
             />
           }
         />

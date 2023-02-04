@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import messageHide from "../img/messageOpen.png";
@@ -19,9 +19,10 @@ const ArticlePage = ({
   setSearchArticleData,
   loading,
   setLoading,
+  allArticleData,
+  setAllArticleData,
 }) => {
   let navigate = useNavigate();
-  let [allArticleData, setAllArticleData] = useState(null);
 
   const handleChangeMessage = (e) => {
     setSay(e.target.value);
@@ -89,7 +90,7 @@ const ArticlePage = ({
           console.log(err);
         });
     }
-  }, [allArticleData, searchArticleData, setLoading]);
+  }, [allArticleData, searchArticleData, setAllArticleData, setLoading]);
 
   //要把抓回來的img 轉成Base64
   function arrayBufferToBase64(buffer) {

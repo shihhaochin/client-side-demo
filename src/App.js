@@ -37,6 +37,7 @@ function App() {
   // let [page, setPage] = useState(1);
   let [searchArticleData, setSearchArticleData] = useState(null);
   let [loading, setLoading] = useState(true);
+  let [allArticleData, setAllArticleData] = useState(null);
 
   //搜尋文章
 
@@ -47,7 +48,9 @@ function App() {
   };
   const commitArticleSearch = () => {
     if (currentUser) {
+      setAllArticleData(null);
       navigate("/articles");
+
       ArticleService.getSearchArticle(articleInput)
         .then((data) => {
           if (data.data.length === 0) {
@@ -128,6 +131,7 @@ function App() {
         setLoading={setLoading}
         handleArticleInput={handleArticleInput}
         commitArticleSearch={commitArticleSearch}
+        setAllArticleData={setAllArticleData}
       />
       <Routes>
         <Route
@@ -203,6 +207,8 @@ function App() {
               setSearchArticleData={setSearchArticleData}
               loading={loading}
               setLoading={setLoading}
+              allArticleData={allArticleData}
+              setAllArticleData={setAllArticleData}
             />
           }
         />

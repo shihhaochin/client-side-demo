@@ -291,6 +291,64 @@ body {
     }
   }
 }
+@media screen and (max-width: 380px) {
+  .navi-container {
+    .nav-left {
+      .naviicon {
+        height: 30px !important;
+      }
+      h1 {
+        font-size: 2rem !important;
+      }
+      .search {
+        input {
+          width: 150px !important;
+        }
+      }
+    }
+  }
+  .navi-containerChange {
+    .nav-leftChange {
+      .naviicon {
+        height: 30px !important;
+      }
+      h1 {
+        font-size: 2rem !important;
+      }
+      .search {
+        input {
+          width: 150px !important;
+        }
+      }
+    }
+  }
+  main {
+    .homepageImg {
+      .homepageImgContent {
+        h1 {
+          font-size: 4rem !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 1000px) {
+  .homepageImgContent {
+    height: 33rem !important;
+    top: 10rem !important;
+  }
+}
+@media screen and (max-height: 600px) {
+  .homepageImgContent {
+    height: 25rem !important;
+    top: 5rem !important;
+    button {
+      transform: translateY(-3rem);
+      padding: 20px 0 !important;
+    }
+  }
+}
 
 @import "./nav";
 @import "./home";

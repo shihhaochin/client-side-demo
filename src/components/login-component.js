@@ -28,6 +28,7 @@ const loginComponent = ({
   };
   const handleLogin = () => {
     setWaitlogin(true);
+
     AuthService.login(email, password)
       .then((response) => {
         if (response.data.token) {
@@ -40,6 +41,7 @@ const loginComponent = ({
       .catch((err) => {
         console.log(err);
         setMessage(err.response.data);
+        setWaitlogin(false);
       });
   };
 

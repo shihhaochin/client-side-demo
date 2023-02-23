@@ -2,11 +2,11 @@
   background-color: rgba(128, 128, 128, 0.3);
   .waitLoginLoading {
     position: absolute;
-    bottom: 7rem;
+    bottom: 2.5rem;
 
     .waitLoginLoadingbg {
       display: flex;
-      padding: 0.5rem 2rem;
+      padding: 5rem 2rem;
       background-color: aqua;
       color: rgb(61, 39, 166);
       border-radius: 45px;
@@ -41,9 +41,9 @@
 
 @keyframes topunder {
   from {
-    transform: translateY(10px);
+    transform: translateY(15px);
   }
   to {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
 }

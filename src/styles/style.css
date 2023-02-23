@@ -962,7 +962,51 @@ main .upArrowExit img {
 .loginImg {
   background-color: rgba(128, 128, 128, 0.3);
 }
+.loginImg .waitLoginLoading {
+  position: absolute;
+  bottom: 7rem;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg {
+  display: flex;
+  padding: 0.5rem 2rem;
+  background-color: aqua;
+  color: rgb(61, 39, 166);
+  border-radius: 45px;
+  font-size: 1.5rem;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg p {
+  margin: 0 1rem;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg p:first-child {
+  animation: topunder 1s linear infinite alternate-reverse;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg p:nth-child(2) {
+  animation: topunder 1.3s linear infinite alternate;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg p:nth-child(3) {
+  animation: topunder 0.7s linear infinite alternate-reverse;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg p:nth-child(4) {
+  animation: topunder 1.2s linear infinite alternate;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg p:nth-child(5) {
+  animation: topunder 1s linear infinite alternate-reverse;
+}
+.loginImg .waitLoginLoading .waitLoginLoadingbg p:nth-child(6) {
+  animation: topunder 0.7s linear infinite alternate;
+}
+.loginImg .waitLoginLoadingClose {
+  display: none;
+}
 
+@keyframes topunder {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
 .postArticleBackground {
   display: flex;
   justify-content: center;
@@ -1101,15 +1145,6 @@ main .upArrowExit img {
   float: right;
 }
 
-@-webkit-keyframes turnCircle {
-  from {
-    transform: rotateZ(0deg);
-  }
-  to {
-    transform: rotateZ(360deg);
-  }
-}
-
 @keyframes turnCircle {
   from {
     transform: rotateZ(0deg);
@@ -1155,8 +1190,7 @@ main .upArrowExit img {
 .allArticleBackground .loadingImgContainer img {
   height: 15rem;
   width: 15rem;
-  -webkit-animation: turnCircle 2s linear infinite;
-          animation: turnCircle 2s linear infinite;
+  animation: turnCircle 2s linear infinite;
 }
 .allArticleBackground .editCheckContainer {
   display: flex;

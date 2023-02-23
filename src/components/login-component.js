@@ -7,6 +7,8 @@ const loginComponent = ({
   setCurrentUser,
   googleId,
   setGoogleId,
+  setWaitlogin,
+  waitlogin,
 }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ const loginComponent = ({
     setPassword(e.target.value);
   };
   const handleLogin = () => {
+    setWaitlogin(true);
     AuthService.login(email, password)
       .then((response) => {
         if (response.data.token) {
@@ -42,9 +45,9 @@ const loginComponent = ({
 
   return (
     <div className="loginImg">
-      <div className="h-screen flex justify-center flex-col items-center pt-14 ">
+      <div className="h-screen flex justify-center flex-col items-center pt-14  ">
         {message && <div className="bg-red-300 py-5 px-20">{message}</div>}
-        <section className="shadow-2xl shadow-cyan-700 mt-8 flex flex-col justify-around w-96 h-1/2 border bg-cyan-700/75 border-slate-800 items-center text-white rounded-3xl  ">
+        <section className="relative shadow-2xl shadow-cyan-700 mt-8 flex flex-col justify-around w-96 h-1/2 border bg-cyan-700/75 border-slate-800 items-center text-white rounded-3xl  ">
           <h1 className="text-3xl mt-3">登入</h1>
           <div className="h-3/4 flex flex-col justify-around items-center">
             <div>
@@ -70,6 +73,20 @@ const loginComponent = ({
             >
               繼續
             </button>
+            <div
+              className={
+                waitlogin ? "waitLoginLoading" : "waitLoginLoadingClose"
+              }
+            >
+              <div className="waitLoginLoadingbg">
+                <p>登</p>
+                <p>入</p>
+                <p>中</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+              </div>
+            </div>
           </div>
           <p>
             還沒註冊？

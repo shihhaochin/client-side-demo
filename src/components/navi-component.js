@@ -19,6 +19,7 @@ const NaviComponent = ({
   setLoading,
   handleArticleInput,
   commitArticleSearch,
+  setWaitlogin,
 }) => {
   const navigate = useNavigate();
   //在input改變的時候（輸入什麼東西的時候）把值存入setInput裏面
@@ -28,11 +29,11 @@ const NaviComponent = ({
 
   const handleLogout = () => {
     AuthService.logout();
-
     window.alert("成功登出，導向首頁！");
     setCurrentUser(AuthService.getCurrentUser());
     setSidenaviChange(true);
     setGoogleId("");
+    setWaitlogin(false);
     navigate("/");
   };
 

@@ -38,6 +38,7 @@ function App() {
   let [searchArticleData, setSearchArticleData] = useState(null);
   let [loading, setLoading] = useState(true);
   let [allArticleData, setAllArticleData] = useState(null);
+  let [waitlogin, setWaitlogin] = useState(false);
 
   //搜尋文章
 
@@ -132,6 +133,8 @@ function App() {
         handleArticleInput={handleArticleInput}
         commitArticleSearch={commitArticleSearch}
         setAllArticleData={setAllArticleData}
+        waitlogin={waitlogin}
+        setWaitlogin={setWaitlogin}
       />
       <Routes>
         <Route
@@ -154,6 +157,8 @@ function App() {
               setCurrentUser={setCurrentUser}
               googleId={googleId}
               setGoogleId={setGoogleId}
+              waitlogin={waitlogin}
+              setWaitlogin={setWaitlogin}
             />
           }
         />

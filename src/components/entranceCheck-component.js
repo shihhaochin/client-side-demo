@@ -20,6 +20,7 @@ const entranceCheckComponent = () => {
     <div className={entranceJudge ? "entranceCheckbg" : "entranceCheckClose"}>
       <div className="entranceCheckContainer">
         <p>網站施工中,請輸入網站認證碼</p>
+        <p>詳細請看附件：網站作品集</p>
 
         <input type="text" onChange={handleEntrance} />
         <button onClick={judgeEntrance}>確定</button>

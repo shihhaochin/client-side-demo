@@ -34,7 +34,7 @@ const loginComponent = ({
         if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
-        window.alert("成功登入，導向首頁！");
+
         setCurrentUser(AuthService.getCurrentUser());
         navigate("/");
       })
